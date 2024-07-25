@@ -1,0 +1,27 @@
+# Query to retrieve types of traffic control available at incidents
+
+traffic_control_query = """SELECT DISTINCT(TrafficControl),
+                         Count(*) as Count
+                  FROM incident_traffic_control
+                  GROUP by TrafficControl HAVING Count(*) > 0"""
+
+vehicle_type_query = """SELECT DISTINCT(UnitType), Count(*) as Count
+                    FROM incident_vehicles
+                    GROUP by UnitType HAVING Count(*) > 0"""
+
+vehicle_make_query = """SELECT DISTINCT(MakeDescription), COUNT(*)
+                    FROM incident_vehicles
+                    WHERE MakeDescription is not null
+                    GROUP by MakeDescription HAVING COUNT(*) > 0"""
+
+county_query = """SELECT DISTINCT(County), COUNT(*)
+                FROM collision_incidents
+                GROUP by County HAVING COUNT(*) > 0"""
+
+county_by_year_query = """SELECT County,strftime(
+                            "%Y", CollisionDate) AS CollisionYear,
+                            COUNT(*) AS IncidentCount
+                          FROM collision_incidents
+                          GROUP BY County, CollisionYear
+                          ORDER BY County, CollisionYear"""
+
