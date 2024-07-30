@@ -1,0 +1,27 @@
+Factor_Code,Description
+01,Alcohol Involvement
+02,Cell Phone
+03,Disregard Traffic Control
+04,Distraction
+05,Drug Involvement
+06,Emotional
+07,Exceeded Stated Speed Limit
+08,Failed to Yield Right of Way
+09,Fatigue
+10,Fell Asleep
+11,Following Too Close
+12,Improper Backing
+13,Improper Passing
+14,Inattention
+15,Lost Consciousness/Fainted
+16,Medication
+17,Misjudge Clearnace
+18,Not Under Proper Control
+19,Overcorrecting/Oversteering
+20,Physical Disability
+21,Sick
+22,Too Fast for Conditions
+23,Turning Improperly
+24,Weaving in Traffic
+97,Other
+99,None Detected
