@@ -1,16 +1,31 @@
-# CodeYou_Capstone
-## Analysis and Visualization of Traffic Accidents in Construction Work Zones in Kentucky
-**Disclaimer** While I am an employee of the Kentucky Transportation Cabinet (KYTC), this analysis is not an official KYTC analysis, but a reflection of my interest in the analysis.  The datasets analyzed in this study do not contain all traffic accidents records for the time period investigated.  They are extracts from downloads from the Kentucky State Police (KSP) collision data search website for the specific case being studied.  The API utilized in this study is a product of KYTC's big data team and is public facing (https://kytc-api-v100-lts-qrntk7e3ra-uc.a.run.app/docs#/).
-**-_Teri Dowdy_**
+<a name="top"></a>
+# Analysis and Visualization of Traffic Accidents in Construction Work Zones in Kentucky
+
+Disclaimer: While I am an employee of the Kentucky Transportation Cabinet (KYTC), this analysis is not an official KYTC analysis but a reflection of my interest in the analysis.
+<p style="text-align:right;">- Teri Dowdy     </p>
+
 ## Table of Contents
-- [CodeYou\_Capstone](#codeyou_capstone)
-  - [Analysis and Visualization of Traffic Accidents in Construction Work Zones in Kentucky](#analysis-and-visualization-of-traffic-accidents-in-construction-work-zones-in-kentucky)
+- [Analysis and Visualization of Traffic Accidents in Construction Work Zones in Kentucky](#analysis-and-visualization-of-traffic-accidents-in-construction-work-zones-in-kentucky)
   - [Table of Contents](#table-of-contents)
+  - [Overview](#overview)
   - [Abstract](#abstract)
   - [Problem Statement](#problem-statement)
   - [Goals and Objectives](#goals-and-objectives)
-  - [Technical Insight:](#technical-insight)
-  - [Code You Data Analysis Project Requirements:](#code-you-data-analysis-project-requirements)
+  - [Technical Insight](#technical-insight)
+  - [Code You Data Analysis Project Requirements](#code-you-data-analysis-project-requirements)
+  - [Data](#data)
+  - [Project Structure](#project-structure)
+  - [Code:You Features Utilized for the Project](#codeyou-features-utilized-for-the-project)
+  - [Getting Started](#getting-started)
+  - [How to Run](#how-to-run)
+
+## Overview
+
+* The goal of this project was to learn new techniques for visualization of data while performing analysis of traffic accidents in construction work zones within the state of Kentucky.
+
+* In addition to downloaded crash data from the Kentucky State Police Collision Data search portal, I wanted to incorporate KYTC's newest roadway characteristics API to return the most accurate information for each incident reported. The API utilized in this study is a product of KYTC’s big data team and is public-facing (https://kytc-api-v100-lts-qrntk7e3ra-uc.a.run.app/docs#/).
+
+* I wanted to create a standalone database for storage in SQLite and geojson and to become more familiar with using multiple visualization techniques outside of the purview of main stream GIS software using python as the main development instrumen
 
 ## Abstract
 In 2023, there were over 1200 crashes in Kentucky roadway work zones, leading to 17 fatalities. This project aims to study traffic accident patterns within construction work zones across Kentucky. The project will use advanced data analysis and visualization techniques to integrate various datasets, identify key trends, and propose safety improvements. By combining KSP crash data with a comprehensive API of available roadway characteristics, the project aims to provide actionable insights to enhance roadway safety during construction activities. Tools such as Pandas, Matplotlib, Plotly, SQLite, Tableau, and Jupyter Notebook will ensure comprehensive and reproducible analysis.
@@ -26,13 +41,12 @@ Construction work zones are crucial areas where traffic accidents often occur du
     2. Integrate available Kentucky Transportation Cabinet (KYTC) roadway characteristics data by making API calls for each crash location.
     3. Analyze the merged dataset to identify trends, patterns, and key factors contributing to accidents in construction work zones.
 - **Goal 2:** to develop Comprehensive and Interactive Visualizations
-    1.	Create visualizations using Matplotlib, Plotly, and Tableau and Panel to illustrate findings.
-    2.	Develop a Panel dashboard to present interactive and insightful visualizations for stakeholders.
+    1. Create visualizations using Matplotlib, Plotly, and Tableau and Panel to illustrate findings.
+    2. Develop a Panel dashboard to present interactive and insightful visualizations for stakeholders.
 
-## Technical Insight:
+## Technical Insight
 - **Python Libraries:** To begin the project, I will begin by utilizing VS Code, Python and Jupyter Notebook extensions, and a Python virtual environment with libraries such as pandas, pyarrow, and requests for data importing, cleaning, and analysis.
 - **Sources:** Collision data will be sourced from the Kentucky State Police (KSP) Collision Data website (http://crashinformationky.org/AdvancedSearch).  The raw text files downloaded for each year will be filtered to 3 of the 7 available files and converted to csv files. Optionally, if I have time I would also like to include OpenWeatherMap's API to access weather data for each collision to evaluate any potential weather-related factors.
-
 - **Access Requirements:** No special access requirements are needed as the data is openly provided by KSP and the KYTC Spatial API for associated roadway attributes.
 - **Data Cleaning:** A SQLite spatial database will be created and the raw KSP files will be filtered with standardize column names, data types (date/time), and parse/extract latitude and longitude.
 - **Data Integration:** Merge/concatenate multiple annual KSP data sources. The KSP collision locations will be processed through the KYTC Spatial API.
@@ -43,10 +57,107 @@ Construction work zones are crucial areas where traffic accidents often occur du
 - **Reporting:** Prepare a report/presentation summarizing key findings, insights, and visual outputs from the analysis.
 - **Optional Reporting:** If time permits, I may also utilize PowerBI or Tableau to provide additional visualization of the data.
 
-## Code You Data Analysis Project Requirements:
-- Feature list #1 choice: Read multiple data files (JSON, CSV, Excel, etc.) and set up a local database with SQLite.
-- Feature list #2 choice: Clean the data and perform a pandas merge, perform SQL join with API retrieved data to calculate  new values based on the query ouptut.
-- Feature list #3 choice: Make 3 visualizations to display data.
-- Feature list #4 choice: Utilize a Python virtual environment and include instructions in the README on how the user should set one up
-- Feature list #4 optional: I may build a custom data dictionary if I have time.
-- Feature list #5 choice: Annotate code with markdown cells in Python and Jupyter Notebook, write clear code comments, and have a well-written README.md.
+## Code You Data Analysis Project Requirements
+- **Feature list #1 choice:** Read multiple data files (JSON, CSV, Excel, etc.) and set up a local database with SQLite.
+- **Feature list #2 choice:** Clean the data and perform a pandas merge, perform SQL join with API retrieved data to calculate new values based on the query output.
+- **Feature list #3 choice:** Make 3 visualizations to display data.
+- **Feature list #4 choice:** Utilize a Python virtual environment and include instructions in the README on how the user should set one up.
+- **Feature list #4 optional:** I may build a custom data dictionary if I have time.
+- **Feature list #5 choice:** Annotate code with markdown cells in Python and Jupyter Notebook, write clear code comments, and have a well-written README.md.
+
+## Data
+
+- Data Sources:
+	- Kentucky State Police Collision Data
+	- KYTC Spatial API
+- Dataset Structure:
+	- Describe the structure of each dataset (columns, data types, etc.)
+	- Size and format of datasets (e.g., CSV, JSON)
+- Preprocessing Steps:
+	- Cleaning, standardizing column names, data types, and extracting geolocation data.
+- Merging multiple datasets.
+
+## Project Structure
+
+- Data Exploration:
+	- Jupyter notebooks or scripts to explore the dataset.
+	- Analysis:
+	    - Using Python with the Pandas package to clean the data.
+	- Visualizations:
+	    - Using Matplotlib, Plotly, and Panel to visualize findings.
+	    - Dashboard:
+    	    - Using Panel or Tableau to combine multiple visulizations together.
+
+## Code:You Features Utilized for the Project
+
+| Feature List | Choice                   | Description                           |
+|--------------|--------------------------|---------------------------------------|
+| 1            |Read multiple data files  | Used 2 CSV files from KSP             |
+| 2            |Clean the data and perform a pandas merge, perform SQL join with API retrieved data to calculate  new values based on the query ouptut.                                   | Cleaned my data and merged them with pandas. Calculated stats from various data points used within visualizations.|
+| 3            |Make 3 visualizations to display data | Made various plots and graphs using Matplotlib, Plotly, Dash and Folium. |
+| 3            |Make a Tableau dashboard  | Time permitting - Made a dashboard with my findings. [Tableau](https://public.tableau.com/app/discover/viz-of-the-day) |
+| 4            |Utilize a Python virtual environment and include instructions in the README on how the user should set one up | Created a venv and included instructions to reproduce.|
+| 4            |Optional: Data Dictionary | Create if time permits |
+| 5            |Annotate code with markdown cells in Python and Jupyter Notebook, write clear code comments, and have a well-written README.md.| Included markdown cells in Jupyter Notebook and inline comments to describe each step and code block. |
+## Getting Started
+- Offer any specific instructions necessary for the reviewer to run your project successfully.
+  - For instance, to run the project, you'll need to have:
+  - A Jupyter Notebooks
+  - B installed
+  - C installed
+
+  - Follow these steps to run the project:
+  1. Clone the repository to your local machine.
+  2. Navigate to the repository directory.
+  3. Open the main file.
+  4. Do item x
+  5. Do item y
+  6. Do item z
+
+## How to Run
+To run this project, follow these steps:
+
+1. Clone the repository to your local machine: [https://github.com/TeriD/CodeYou_Capstone from git bash](https://github.com/TeriD/CodeYou_Capstone.git)
+2. After you have cloned the repo to your local machine, navigate to the project folder in GitBash/Terminal.
+3. Create a virtual environment in the project folder.
+4. Activate the virtual environment.
+5. Install the required packages: `pip install -r requirements.txt`
+6. Navigate to the repository directory.
+7. There are two main files that build the project datasets:
+   1. Database_Setup_n_Data_Ingestion.ipynb - You can choose to Run all or step through the cells individually.
+      - This Jupyter notebook builds the SQLite database if necessary
+      - It iterates through the raw KSP datasets and imports them in order into cleaned dataset csv files and tables within the database.
+      - It also loads lookup tables needed for labels within the visulaizations.
+   2. RetrieveRoadwayCharacteristicsFromKYTC_API.ipynb
+      - be aware that there are 4105 incidents to be processed.  The main function call to the API for all incidents has averaged 8 minutes to be processed completely.  If you see a record count greater than 4105, then the database has not been cleared completely.  This can happen if the 1st process is stopped before completion and not reset.
+8. There are multiple visualizations available. No specific order is recommended.
+   1. Folium_Incidents_Locations_Map.ipynb
+      - This visualization imports the geojson data from the RoadwayCharacteristics
+      - creates a map showing the locations of each incident overlying a base map, and county and KYTC District layers.
+      - The map includes a layer list that allows you to turn off the auxillary layers.
+   2. Incidents_By_District_and_Year_Bar_Graph.ipynb
+      - This visualization performs a join between the incidents and the county lookup table to allow the data to be viewed by District and Year.
+      - There are 12 KYTC Districts shown on the graph from west to east, numerically.
+      - Each year in the dataset can be selected by using the dropdown list at the top of the graph.
+   3. HumanFactor_Visualizations.ipynb
+      - This visualization joins the ksp_factors table to the unit_code lookup table to display readable descriptions of the factors that may have caused or influenced an incident.
+      - The Jupyter notebook provides 3 separate visualizations for the same data.
+        - Word Cloud
+        - Bar Graph
+        - Pie Chart
+   4. VehicleType_Visualization_Bokeh.ipynb
+        - This visualization shows the different vehicle type categories that were involved in all incidents within the range of data.
+
+9. When you are done working on your repo, deactivate the virtual environment.
+
+Virtual Environment Commands
+
+| Command | Linux/Mac | GitBash |
+|---------|-----------|---------|
+| Create | `python3 -m venv venv` | `python -m venv venv` |
+| Activate | `source venv/bin/activate` | `source venv/Scripts/activate` |
+| Install | `pip install -r requirements.txt` | `pip install -r requirements.txt` |
+| Deactivate | `deactivate` | `deactivate` |
+
+
+[Back to top](#top)
