@@ -1,4 +1,4 @@
-IncidentID,UnitNumber,PersonNo,PersonTypeCde,DeathDte,AgeAtIncident,Gender,IsOwner,WasTransported,InjurySeverityCde,InjuryLocationCde,PosInVehicleCde,RestraintUseCde,TrappedCde,EjectionCde,EjectionPathCde,SuspectedOfDrinking,TestOffered,TestRefused,TestedForCde,TestSentTo,TestResults,HasOpLicense,HasCDLicense,HasLicenseRestrictions,HasOpEndorsements
+IncidentID,UnitNumber,PersonNo,PersonTypeCde,DeathDte,AgeAtIncident,Gender,IsOwner,WasTransported,InjurySeverityCde,InjuryLocationCde,PosInVehicleCde,RestraintUseCde,TrappedCde,EjectionCde,EjectionPathCde,SuspectedOfDrinking,TestOffered,TestRefused,TestedForCde,TestSentTo,TestResults,HasOpLicense,HasCDLicense,HasLicenseRestrictions,HasOpEndorsements,
 32682385,2,3,08,,,,True,False,,,,,,,,,,,,,,,,,,
 32686843,2,2,08,,,,True,False,,,,,,,,,,,,,,,,,,
 32700076,,2,09,,,,,,,,,,,,,,,,,,,,,,,
