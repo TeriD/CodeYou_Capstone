@@ -13,10 +13,9 @@ Disclaimer: While I am an employee of the Kentucky Transportation Cabinet (KYTC)
   - [Goals and Objectives](#goals-and-objectives)
   - [Technical Insight](#technical-insight)
   - [Code You Data Analysis Project Requirements](#code-you-data-analysis-project-requirements)
+  - [Code:You Features Utilized for the Project](#codeyou-features-utilized-for-the-project)
   - [Data](#data)
   - [Project Structure](#project-structure)
-  - [Code:You Features Utilized for the Project](#codeyou-features-utilized-for-the-project)
-  - [Getting Started](#getting-started)
   - [How to Run](#how-to-run)
 
 ## Overview
@@ -65,11 +64,34 @@ Construction work zones are crucial areas where traffic accidents often occur du
 - **Feature list #4 optional:** I may build a custom data dictionary if I have time.
 - **Feature list #5 choice:** Annotate code with markdown cells in Python and Jupyter Notebook, write clear code comments, and have a well-written README.md.
 
+## Code:You Features Utilized for the Project
+
+| Feature List | Choice                   | Description                           |
+|--------------|--------------------------|---------------------------------------|
+| 1            |Read multiple data files  | Used 2 CSV files from KSP             |
+| 2            |Clean the data and perform a pandas merge, perform SQL join with API retrieved data to calculate  new values based on the query ouptut.                                   | Cleaned my data and merged them with pandas. Calculated stats from various data points used within visualizations.|
+| 3            |Make 3 visualizations to display data | Made various plots and graphs using Matplotlib, Plotly, Dash and Folium. |
+| 3            |Make a Tableau dashboard  | Time permitting - Made a dashboard with my findings. [Tableau](https://public.tableau.com/app/discover/viz-of-the-day) |
+| 4            |Utilize a Python virtual environment and include instructions in the README on how the user should set one up | Created a venv and included instructions to reproduce.|
+| 4            |Optional: Data Dictionary | Create if time permits |
+| 5            |Annotate code with markdown cells in Python and Jupyter Notebook, write clear code comments, and have a well-written README.md.| Included markdown cells in Jupyter Notebook and inline comments to describe each step and code block. |
+
 ## Data
 
 - Data Sources:
-	- Kentucky State Police Collision Data
-	- KYTC Spatial API
+  - Kentucky State Police Collision Data [http://crashinformationky.org/AdvancedSearch]
+  - Parameters:
+    - Environmental Factor: "Collision Work Zone"
+    - Collision Dates: January 2020-June 2024
+    - Each year's data was downloaded individually due to limitations of KSP site.
+
+![Query Parameters](data/reference_data/KSP_Website.png)
+
+
+
+- KYTC Spatial API Services:
+   - [API Website](https://kytc-api-v100-lts-qrntk7e3ra-uc.a.run.app/docs#/)
+-
 - Dataset Structure:
 	- Describe the structure of each dataset (columns, data types, etc.)
 	- Size and format of datasets (e.g., CSV, JSON)
@@ -86,33 +108,8 @@ Construction work zones are crucial areas where traffic accidents often occur du
 	- Visualizations:
 	    - Using Matplotlib, Plotly, and Panel to visualize findings.
 	    - Dashboard:
-    	    - Using Panel or Tableau to combine multiple visulizations together.
+    	    - Using Panel or Tableau to combine multiple visualizations together.
 
-## Code:You Features Utilized for the Project
-
-| Feature List | Choice                   | Description                           |
-|--------------|--------------------------|---------------------------------------|
-| 1            |Read multiple data files  | Used 2 CSV files from KSP             |
-| 2            |Clean the data and perform a pandas merge, perform SQL join with API retrieved data to calculate  new values based on the query ouptut.                                   | Cleaned my data and merged them with pandas. Calculated stats from various data points used within visualizations.|
-| 3            |Make 3 visualizations to display data | Made various plots and graphs using Matplotlib, Plotly, Dash and Folium. |
-| 3            |Make a Tableau dashboard  | Time permitting - Made a dashboard with my findings. [Tableau](https://public.tableau.com/app/discover/viz-of-the-day) |
-| 4            |Utilize a Python virtual environment and include instructions in the README on how the user should set one up | Created a venv and included instructions to reproduce.|
-| 4            |Optional: Data Dictionary | Create if time permits |
-| 5            |Annotate code with markdown cells in Python and Jupyter Notebook, write clear code comments, and have a well-written README.md.| Included markdown cells in Jupyter Notebook and inline comments to describe each step and code block. |
-## Getting Started
-- Offer any specific instructions necessary for the reviewer to run your project successfully.
-  - For instance, to run the project, you'll need to have:
-  - A Jupyter Notebooks
-  - B installed
-  - C installed
-
-  - Follow these steps to run the project:
-  1. Clone the repository to your local machine.
-  2. Navigate to the repository directory.
-  3. Open the main file.
-  4. Do item x
-  5. Do item y
-  6. Do item z
 
 ## How to Run
 To run this project, follow these steps:
@@ -121,16 +118,17 @@ To run this project, follow these steps:
 2. After you have cloned the repo to your local machine, navigate to the project folder in GitBash/Terminal.
 3. Create a virtual environment in the project folder.
 4. Activate the virtual environment.
-5. Install the required packages: `pip install -r requirements.txt`
-6. Navigate to the repository directory.
-7. There are two main files that build the project datasets:
+5. Jupyter Notebooks is required to run this project.
+6. Install the required packages: `pip install -r requirements.txt`
+7. Navigate to the repository directory.
+8. There are two main files that build the project datasets:
    1. Database_Setup_n_Data_Ingestion.ipynb - You can choose to Run all or step through the cells individually.
       - This Jupyter notebook builds the SQLite database if necessary
       - It iterates through the raw KSP datasets and imports them in order into cleaned dataset csv files and tables within the database.
       - It also loads lookup tables needed for labels within the visulaizations.
    2. RetrieveRoadwayCharacteristicsFromKYTC_API.ipynb
       - be aware that there are 4105 incidents to be processed.  The main function call to the API for all incidents has averaged 8 minutes to be processed completely.  If you see a record count greater than 4105, then the database has not been cleared completely.  This can happen if the 1st process is stopped before completion and not reset.
-8. There are multiple visualizations available. No specific order is recommended.
+9. There are multiple visualizations available. No specific order is recommended.
    1. Folium_Incidents_Locations_Map.ipynb
       - This visualization imports the geojson data from the RoadwayCharacteristics
       - creates a map showing the locations of each incident overlying a base map, and county and KYTC District layers.
@@ -148,7 +146,7 @@ To run this project, follow these steps:
    4. VehicleType_Visualization_Bokeh.ipynb
         - This visualization shows the different vehicle type categories that were involved in all incidents within the range of data.
 
-9. When you are done working on your repo, deactivate the virtual environment.
+10. When you are done working on your repo, deactivate the virtual environment.
 
 Virtual Environment Commands
 
