@@ -17,6 +17,8 @@ Disclaimer: While I am an employee of the Kentucky Transportation Cabinet (KYTC)
   - [Data](#data)
   - [Project Structure](#project-structure)
   - [How to Run](#how-to-run)
+  - [Virtual Environment Commands](#virtual-environment-commands)
+  - [Future Development](#future-development)
 
 ## Overview
 
@@ -70,10 +72,10 @@ Construction work zones are crucial areas where traffic accidents often occur du
 |--------------|--------------------------|---------------------------------------|
 | 1            |Read multiple data files  | Used 2 CSV files from KSP             |
 | 2            |Clean the data and perform a pandas merge, perform SQL join with API retrieved data to calculate  new values based on the query ouptut.                                   | Cleaned my data and merged them with pandas. Calculated stats from various data points used within visualizations.|
-| 3            |Make 3 visualizations to display data | Made various plots and graphs using Matplotlib, Plotly, Dash and Folium. |
-| 3            |Make a Tableau dashboard  | Time permitting - Made a dashboard with my findings. [Tableau](https://public.tableau.com/app/discover/viz-of-the-day) |
+| 3            |Make 3 visualizations to display data | Made 13 plots and graphs using Bokeh, Dash, Folium, Matplotlib, Panel and Plotly. |
+| 3            |Make a Tableau dashboard  | Time permitting - Make a dashboard with my findings. [Tableau](https://public.tableau.com/app/discover/viz-of-the-day) |
 | 4            |Utilize a Python virtual environment and include instructions in the README on how the user should set one up | Created a venv and included instructions to reproduce.|
-| 4            |Optional: Data Dictionary | Create if time permits |
+| 4            |Optional: Data Dictionary | Created a data dictionary for all datasets used in project. |
 | 5            |Annotate code with markdown cells in Python and Jupyter Notebook, write clear code comments, and have a well-written README.md.| Included markdown cells in Jupyter Notebook and inline comments to describe each step and code block. |
 
 ## Data
@@ -121,34 +123,61 @@ To run this project, follow these steps:
 5. Jupyter Notebooks is required to run this project.
 6. Install the required packages: `pip install -r requirements.txt`
 7. Navigate to the repository directory.
-8. There are two main files that build the project datasets:
-   1. Database_Setup_n_Data_Ingestion.ipynb - You can choose to Run all or step through the cells individually.
+8. A Data Dictionary has been created for reference purposes.
+9. If you intend to run the database setup, please run the Database_Precheck.ipynb first to clean the database.  Otherwise, you may end up with duplicate records.
+10. There are two main files that build the project datasets:
+   a. Database_Setup_n_Data_Ingestion.ipynb - You can choose to Run all or step through the cells individually.
       - This Jupyter notebook builds the SQLite database if necessary
       - It iterates through the raw KSP datasets and imports them in order into cleaned dataset csv files and tables within the database.
-      - It also loads lookup tables needed for labels within the visulaizations.
-   2. RetrieveRoadwayCharacteristicsFromKYTC_API.ipynb
+      - It also loads lookup tables needed for labels within the visualizations.
+   b. RetrieveRoadwayCharacteristicsFromKYTC_API.ipynb
       - be aware that there are 4105 incidents to be processed.  The main function call to the API for all incidents has averaged 8 minutes to be processed completely.  If you see a record count greater than 4105, then the database has not been cleared completely.  This can happen if the 1st process is stopped before completion and not reset.
-9. There are multiple visualizations available. No specific order is recommended.
-   1. Folium_Incidents_Locations_Map.ipynb
-      - This visualization imports the geojson data from the RoadwayCharacteristics
-      - creates a map showing the locations of each incident overlying a base map, and county and KYTC District layers.
+   c. Create_County_Extents.ipynb
+      - This Jupyter notebook builds the latitude and longitude extents used in zoom functionality within the Folium map.
+      - While this notebook functions as written, it has not been implemented in the Folium map product successfully. This is a work in progress.
+11. There are multiple visualizations available. No specific order is recommended. They are presented in alphabetical order.
+   a. Deaths and Speed Visualizations.ipynb
+      - This Jupyter notebook uses plotly to build six graphs that look at the fatalities that occurred for the incidents reported in this project
+      - The first two graphs (line and bar graphs) are two different representations of fatalities by year and month.
+      - The third graph represents both fatalities and injuries by year and month.
+      - The forth graph add the factor of PersonType to graph 3.  The next step for this graph will be to change the numeric value for PersonType to the Code Description (i.e. PersonType=1 is the driver of a vehicle)
+      - Graph five represents the total fatalities by PersonType
+      - Graph six represents the total incidents on state-maintained routes by route type where excessive speed was involved.
+   b. Drivers_By_Age_and_Gender.ipynb
+      - This Jupyter notebook uses plotly.express to build a graph that categorizes the age and gender of drivers involved in incidents for 2023-2024.
+      - The ages were grouped to make the data easier to display.
+      - Of note, the query was made on the entire database, but only data was retrieved for 2023-2024.  This is probably due to reporting changes for prior years.  A next step for this graph would be a deeper investigation of the differences between the prior years records to make the query work for the entire dataset.
+   c. Folium_Incidents_Locations_Map.ipynb
+      - This visualization uses Folium and Panel to create an html page to display spatial data.
+      - The Jupyter notebook imports the geojson data from the RoadwayCharacteristics
+      - The process creates a map showing the locations of each incident overlying a base map, and county and KYTC District layers.
       - The map includes a layer list that allows you to turn off the auxillary layers.
-   2. Incidents_By_District_and_Year_Bar_Graph.ipynb
-      - This visualization performs a join between the incidents and the county lookup table to allow the data to be viewed by District and Year.
-      - There are 12 KYTC Districts shown on the graph from west to east, numerically.
-      - Each year in the dataset can be selected by using the dropdown list at the top of the graph.
-   3. HumanFactor_Visualizations.ipynb
-      - This visualization joins the ksp_factors table to the unit_code lookup table to display readable descriptions of the factors that may have caused or influenced an incident.
-      - The Jupyter notebook provides 3 separate visualizations for the same data.
+   d. HumanFactor_Visualizations.ipynb
+      - This Jupyter notebook uses wordcloud and matplotlib to build the visualizations
+      - It joins the ksp_factors table to the unit_code lookup table to display readable descriptions of the factors that may have caused or influenced an incident.
+      - Three separate visualizations are produced for comparison of the same data.
         - Word Cloud
         - Bar Graph
         - Pie Chart
-   4. VehicleType_Visualization_Bokeh.ipynb
-        - This visualization shows the different vehicle type categories that were involved in all incidents within the range of data.
+   e. Incidents_By_District_and_Year_Bar_Graph.ipynb
+      - This Jupyter notebook uses dash to perform the visualization
+      - It performs a join between the incidents and the county lookup table to allow the data to be viewed by District and Year.
+      - There are 12 KYTC Districts shown on the graph from west to east, numerically.
+      - An interesting feature of the dash app is the ability to change the graph to display each year in the dataset by selecting the desired year by a dropdown list at the top of the graph.
+   f. Traffic_Controls_Visulaizations.ipynb
+      - This Jupyter notebook uses plotly express to build a stacked bar chart to display Traffic Control Devices by Route Type and District in Place for Traffic Incidents in Construction Work Zones on State-maintained Routes 2020-2024.
+      - The data was grouped by KYTC District to show the variations in the distribution of Interstates and Parkways across the state.
+   g. VehicleType_Visualization_Bokeh.ipynb
+        - This Jupyter notebook uses Bokeh to provide the visualization
+        - The output pie chart plot shows the different vehicle type categories that were involved in all incidents within the range of data.
+12. Workzone_Dashboard
+   a. This final visualization is a work in progress.
+   b. The workzone_dashboard.py builds components for a Panel application giving an overview of the project and a visualization of the KSP_Incidents data table.
+   c. The Run_Workzone_Dashboard.ipynb will open the Panel application in a web browser.
+   d. Note that if you execute the Run_Workzone_Dashboard.ipynb to display the Panel application, you must stop the process in the code IDE.  Closing the browser does not accomplish this.  This step is a workaround to having the Panel application hosted on a third-party site.
+13. When you are done working on your repo, deactivate the virtual environment.
 
-10. When you are done working on your repo, deactivate the virtual environment.
-
-Virtual Environment Commands
+## Virtual Environment Commands
 
 | Command | Linux/Mac | GitBash |
 |---------|-----------|---------|
@@ -157,5 +186,15 @@ Virtual Environment Commands
 | Install | `pip install -r requirements.txt` | `pip install -r requirements.txt` |
 | Deactivate | `deactivate` | `deactivate` |
 
+## Future Development
+   - Expand the project to include additional years of data to gain a better understanding of progress (if any) toward reducing the number of incidents in Construction Work Zones.
+   - Design and build an entire Panel application to include these and other panes from the project into a cohesive site.  Next steps include:
+      1. get the Folium map pane to function within the Panel application.
+      2. add the VehicleType_Visualization_Bokeh pane
+      3. add the HumanFactor_Visualization Bar Graph to the Panel application
+      4. host the Panel application for a more cohesive product.
+   - Expand the data visualizations for other queries to analyze the data further.
+   - Investigate ways to integrate/bind panes together to make them more interactive.
+   - Extract historical weather data from the NOAA website and integrate conditions as factors for analysis of accident conditions.
 
 [Back to top](#top)
