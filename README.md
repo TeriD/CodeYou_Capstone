@@ -164,7 +164,7 @@ To run this project, follow these steps:
       - It performs a join between the incidents and the county lookup table to allow the data to be viewed by District and Year.
       - There are 12 KYTC Districts shown on the graph from west to east, numerically.
       - An interesting feature of the dash app is the ability to change the graph to display each year in the dataset by selecting the desired year by a dropdown list at the top of the graph.
-   f. Traffic_Controls_Visulaizations.ipynb
+   f. Traffic_Controls_Visualizations.ipynb
       - This Jupyter notebook uses plotly express to build a stacked bar chart to display Traffic Control Devices by Route Type and District in Place for Traffic Incidents in Construction Work Zones on State-maintained Routes 2020-2024.
       - The data was grouped by KYTC District to show the variations in the distribution of Interstates and Parkways across the state.
    g. VehicleType_Visualization_Bokeh.ipynb

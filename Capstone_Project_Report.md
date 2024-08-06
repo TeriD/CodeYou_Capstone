@@ -88,9 +88,47 @@ This project and its analyzes were performed exclusively on a MacBook Pro laptop
 
 2. **Data Analysis:**
         <p>Once the datasets were in place, the datasets were reviewed through a series of queries in SQLite to ensure that visualizations would reflect the data accurately.  I identified trends and key factors in construction work zones to then design the joins needed to represent the different data visualizations.</p>
-        <p>During each individual topic reviewed for a visualization, a series of stats were developed.  These are presented below in a tabular format:
-
-    </p>
+        <p>During each individual topic reviewed for a visualization, a series of stats were developed.  Some of these are presented here:</p>
+        <div> Stats from KSP datasets:
+            <ul>
+                <li>Number of Incidents: 4,105</li>
+                <li>Number of Vehicles: 8,205</li>
+                <li>Number of People: 15,328</li>
+                <li>Number of Human Factors reported: 27,282</li>
+                <li>Number of Traffic Control Devices: 13,492</li>
+            </ul>
+        </div>
+        <br>
+        <div> Statistics on fatalities and injuries:
+            <ul>
+                <li>Total Number of Fatalities: 35</li>
+                <li>Number of Incidents with Fatalities: 23</li>
+                <li>Total Number of Injuries: 992</li>
+                <li>Number of Incidents with Injuries: 647</li>
+            </ul>
+        </div>
+        <br>
+        <div>Excessive Speed Statistics:
+            <ul>
+                <li>Number of Incidents on state-maintained roads: 3,648</li>
+                <li>Number of Incidents on state-maintained roads with excessive speed as a factor: 3,648</li>
+            </ul>
+        </div>
+        <br>
+        <div>Age and Gender Statistics:
+            <ul>
+                <li>Number of Drivers: 2,782</li>
+                <li>Number of Drivers below 21: 162</li>
+                <li>Number of Male drivers below 21: 96</li>
+                <li>Number of Drivers between 21-25: 304</li>
+                <li>Number of Male drivers between 21-25: 198</li>
+                <li>Number of Drivers between 31-35: 288</li>
+                <li>Number of Male drivers between 31-35: 190</li>
+                <li>Number of Drivers over 65: 296</li>
+                <li>Number of Male drivers over 65: 201</li>
+            </ul>
+            Note: Not all years data reported driver information.  These statistics are from 2023-2024.
+        </div>
 
 3. **Visualization:**
         <p>Overall, there were 14 visualizations produced for this project.  Each of the visualizations allowed for the learning of new python modules and techniques that I had not utilized previously.  One of the most important aspects of a visualization is to determine if the selected visualization represents the data in the best way possible - in other words, can the audience see what the data actually represents!</p>
