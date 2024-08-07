@@ -1,9 +1,12 @@
 base64
 bokeh
+colorcet
 dash
 folium
 furl
 geopandas
+holoviews
+hvplot
 json
 markdown
 math

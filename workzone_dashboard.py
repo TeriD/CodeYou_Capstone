@@ -213,13 +213,11 @@ map_html_path = f"web/KY_Incident_Locations.html"
 m.save(map_html_path)
 
 # Embed the map HTML in a Panel pane using an iframe
-map_pane = pn.pane.HTML(f"""
-    <iframe src="{map_html_path}" width="100%" height="500" style="border:none;"></iframe>
-""", sizing_mode='stretch_both', height=500)
+map_pane = pn.Row(m, height=400)
 
 # Build the Panel layout
 df_pane = pn.widgets.Tabulator(
-    df, width=600, sizing_mode='stretch_both', height=400)
+    df, width=600, sizing_mode='stretch_width', height=400)
 
 # Create the final app layout
 app = pn.Column(
@@ -229,11 +227,13 @@ app = pn.Column(
     pn.layout.Divider(),
     "### Incident Data",
     df_pane,
-    # pn.layout.Divider(),
-    # "### Location",
-    # map_pane,
-    sizing_mode='stretch_both'
+    pn.layout.Divider(),
+    "### Location",
+    map_pane,
+    # sizing_mode='stretch_width'
 )
 
 # Serve the app
 app.servable()
+
+app.show()

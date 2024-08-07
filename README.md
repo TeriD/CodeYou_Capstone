@@ -131,7 +131,7 @@ To run this project, follow these steps:
       - It iterates through the raw KSP datasets and imports them in order into cleaned dataset csv files and tables within the database.
       - It also loads lookup tables needed for labels within the visualizations.
    b. RetrieveRoadwayCharacteristicsFromKYTC_API.ipynb
-      - be aware that there are 4105 incidents to be processed.  The main function call to the API for all incidents has averaged 8 minutes to be processed completely.  If you see a record count greater than 4105, then the database has not been cleared completely.  This can happen if the 1st process is stopped before completion and not reset.
+      - be aware that there are 4105 incidents to be processed.  The main function call to the API for all incidents has averaged 8 minutes on my development computer (Macbook Pro M2) to be processed completely.  The same process on my Windows VDI workspace took 35 minutes to process the API calls.  If you see a record count greater than 4105, then the database has not been cleared completely.  This can happen if the 1st process is stopped before completion and not reset.
    c. Create_County_Extents.ipynb
       - This Jupyter notebook builds the latitude and longitude extents used in zoom functionality within the Folium map.
       - While this notebook functions as written, it has not been implemented in the Folium map product successfully. This is a work in progress.
@@ -150,7 +150,7 @@ To run this project, follow these steps:
    c. Folium_Incidents_Locations_Map.ipynb
       - This visualization uses Folium and Panel to create an html page to display spatial data.
       - The Jupyter notebook imports the geojson data from the RoadwayCharacteristics
-      - The process creates a map showing the locations of each incident overlying a base map, and county and KYTC District layers.
+      - The process creates an html map showing the locations of each incident overlying a base map, and county and KYTC District layers.
       - The map includes a layer list that allows you to turn off the auxillary layers.
    d. HumanFactor_Visualizations.ipynb
       - This Jupyter notebook uses wordcloud and matplotlib to build the visualizations
@@ -170,11 +170,11 @@ To run this project, follow these steps:
    g. VehicleType_Visualization_Bokeh.ipynb
         - This Jupyter notebook uses Bokeh to provide the visualization
         - The output pie chart plot shows the different vehicle type categories that were involved in all incidents within the range of data.
-12. Workzone_Dashboard
+        - The output is an html that should open immediately after the complete notebook is completed.
+12. Workzone_Dashboard.ipynb
    a. This final visualization is a work in progress.
-   b. The workzone_dashboard.py builds components for a Panel application giving an overview of the project and a visualization of the KSP_Incidents data table.
-   c. The Run_Workzone_Dashboard.ipynb will open the Panel application in a web browser.
-   d. Note that if you execute the Run_Workzone_Dashboard.ipynb to display the Panel application, you must stop the process in the code IDE.  Closing the browser does not accomplish this.  This step is a workaround to having the Panel application hosted on a third-party site.
+   b. The workzone_dashboard.ipynb builds components for a Panel application giving an overview of the project and a visualization of the KSP_Incidents data table. The Panel application will show at the conclusion of the notebook run.
+   c. The final intent is to display several of the existing panes created in other standalone notebooks as part of a cohesive whole.
 13. When you are done working on your repo, deactivate the virtual environment.
 
 ## Virtual Environment Commands
