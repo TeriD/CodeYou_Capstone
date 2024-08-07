@@ -121,7 +121,7 @@ To run this project, follow these steps:
 3. Create a virtual environment in the project folder.
 4. Activate the virtual environment.
 5. Jupyter Notebooks is required to run this project.
-6. Install the required packages: `pip install -r requirements.txt`
+6. Install the required packages: `pip install -r requirements.txt`.  Note:  the 'pipfreeze' command rendered an extensive list of packages, not all of which are required for the operation of this project.  I have included a shorter list of just those packages actually called in the Jupyter notebooks utilized for the analyses and visualizations. This shorter list is 'requirements_minimal.txt'.
 7. Navigate to the repository directory.
 8. A Data Dictionary has been created for reference purposes.
 9. If you intend to run the database setup, please run the Database_Precheck.ipynb first to clean the database.  Otherwise, you may end up with duplicate records.
