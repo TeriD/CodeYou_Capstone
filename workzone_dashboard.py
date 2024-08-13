@@ -209,15 +209,18 @@ add_simple_marker(roads_geojson, m)
 
 # Save the map to an HTML file
 map_html_path = f"web/KY_Incident_Locations.html"
-
 m.save(map_html_path)
 
-# Embed the map HTML in a Panel pane using an iframe
-map_pane = pn.Row(m, height=400)
+# Load the map HTML content
+with open(map_html_path, 'r') as file:
+    map_html_content = file.read()
+
+# Embed the map HTML in a Panel pane using an HTML pane
+map_pane = pn.pane.HTML(map_html_content, width=800,
+                        height=500, sizing_mode='stretch_both')
 
 # Build the Panel layout
-df_pane = pn.widgets.Tabulator(
-    df, width=600, sizing_mode='stretch_width', height=400)
+df_pane = pn.widgets.Tabulator(df, width=800, height=250)
 
 # Create the final app layout
 app = pn.Column(
@@ -227,13 +230,15 @@ app = pn.Column(
     pn.layout.Divider(),
     "### Incident Data",
     df_pane,
-    pn.layout.Divider(),
-    "### Location",
-    map_pane,
-    # sizing_mode='stretch_width'
+    # pn.layout.Divider(),
+    # "### Location",
+    # map_pane,
+    pn.Layout.Divider(),
+    "### Visualizations",
+
+    sizing_mode='stretch_width'
 )
 
 # Serve the app
 app.servable()
-
 app.show()
